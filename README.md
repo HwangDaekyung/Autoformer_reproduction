@@ -9,6 +9,12 @@
 
 공식 코드를 import하지 않고 **데이터 로더, 모델, 학습 루프를 모두 직접 구현**했습니다. 구현이 맞는지는 공식 코드와 같은 가중치를 넣었을 때 출력이 일치하는지로 검증했습니다.
 
+### 모델 흐름 설명 영상 (1분)
+
+[![Autoformer 흐름 설명 영상](docs/autoformer_flow_thumb.jpg)](docs/autoformer_flow.mp4)
+
+입력 `x_enc [B, 96, 7]`이 직접 구현한 코드를 지나며 어떻게 바뀌는지 따라가는 영상입니다. 분해(이동평균) → 디코더 초기값(최근 48칸 + 미래 96칸) → 인코더(추세는 버리고 계절만) → Auto-Correlation(top-k 지연으로 roll 후 가중합) → 디코더(추세 세 개 누적) → 계절 + 추세 = 최종 예측 순서로, 각 단계의 코드 줄과 텐서 모양을 함께 보여 줍니다. 이미지를 누르면 영상 파일이 열립니다.
+
 ---
 
 ## 1. 구성
@@ -16,6 +22,8 @@
 ```
 Autoformer_reproduction/
 ├── README.md
+├── docs/
+│   └── autoformer_flow.mp4             # 모델 흐름 설명 영상 (1분)
 ├── notebooks/
 │   └── Autoformer_from_scratch.ipynb   # 직접 구현 + 실험 노트북 (Colab)
 └── results/
