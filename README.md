@@ -176,6 +176,31 @@ Autoformer_reproduction/
 
 **구현이 원인인지 확인한 것**: 모델은 공식 코드와 같은 가중치에서 출력이 일치하고(6장), 데이터 로더도 ETTm2와 custom 형식(ILI와 같은 구조의 인공 데이터) 모두에서 공식 로더와 샘플 수·값이 일치함을 확인했습니다. 남은 차이를 가르려면 **같은 환경에서 공식 코드로 ILI·Electricity를 돌려 비교**하는 것이 다음 단계입니다. 공식 코드도 같은 결과가 나오면 환경·무작위성 문제, 다르게 나오면 학습 과정의 차이입니다.
 
+### 재현 범위
+
+이 저장소는 논문의 **주 결과(Table 1의 Autoformer, Table 10)** 재현에 집중했습니다. 논문의 나머지 실험은 아래와 같이 진행 상태를 표시합니다.
+
+| 구분 | 실험 | 내용 | 상태 |
+|---|---|---|---|
+| 본문 | Table 1 | 다변량, 6개 데이터셋 × 예측 4개 (+ 비교 모델 7개) | ✅ Autoformer 완료 (72회) · ⬜ 비교 모델 |
+| 본문 | Table 2 | 단변량 (ETT, Exchange) | ⬜ |
+| 본문 | Table 3 | 분해 구조 ablation (Transformer·Informer·LogTrans·Reformer에 적용) | ⬜ |
+| 본문 | Table 4 | Auto-Correlation ↔ Full / LogSparse / LSH / ProbSparse Attention | ⬜ |
+| 본문 | Figure 4 | 디코더 계절·추세 시각화 | ✅ (5-4) |
+| 본문 | Figure 5 | 학습된 의존성 시각화 (Attention 계열과 비교) | ⬜ |
+| 본문 | Figure 6 | 학습된 지연 통계 | ✅ Autoformer 디코더 (5-5) |
+| 본문 | Figure 7 | 메모리·실행 시간 효율 분석 | ⬜ |
+| 부록 | Table 5 | ETT 4종(ETTh1·h2·m1·m2) 전체 벤치마크 | ⬜ (ETTm2 96~720만 완료) |
+| 부록 | Table 6 | 하이퍼파라미터 c 민감도 | ⬜ |
+| 부록 | Table 7 | 입력 길이에 따른 성능 | ⬜ |
+| 부록 | Table 8 | 디코더 입력의 과거 정보 길이 | ⬜ |
+| 부록 | Table 9 | 사전 분해(STL 등) + 두 Transformer와 비교 | ⬜ |
+| 부록 | Table 10 | Table 1의 평균 ± 표준편차 | ✅ 재현 판정 기준으로 사용 |
+| 부록 | Table 11 | COVID-19 데이터 | ⬜ |
+| 부록 | Figure 8~13 | 예측 사례 (다변량·단변량) | ✅ ETTm2 다변량만 (5-3) |
+
+다음 우선순위: Table 4 → Table 3 → Table 6·7 → Figure 7 → 비교 모델(Table 1·2).
+
 ## 5. 시각화
 
 모든 그래프는 직접 구현 모델(각 설정의 첫 번째 반복, run 0)로 그렸으며, 노트북 섹션 2, 3, 11에서 생성됩니다. 값은 정규화된 스케일이고, 예측 그래프는 마지막 변수(OT, 오일 온도) 기준입니다.
