@@ -25,8 +25,7 @@ Autoformer_reproduction/
 ├── docs/
 │   └── autoformer_flow.mp4             # 모델 흐름 설명 영상 (1분)
 ├── notebooks/
-│   └── Autoformer_from_scratch.ipynb   # 직접 구현 + 실험 노트북 (Colab)
-│   └── Autoformer_extra_experiments.ipynb  # 추가 실험 (Table 2·4·5·6·7·8, Figure 5·7), 중단 후 이어서 실행 가능
+│   └── Autoformer_from_scratch.ipynb   # 직접 구현 + 실험 노트북 (Colab), 섹션 12~24는 추가 실험
 └── results/
     ├── official_result.txt             # 공식 코드 실행 원본 기록
     ├── official_results.csv            # 공식 코드 결과 정리
@@ -202,9 +201,9 @@ Autoformer_reproduction/
 
 다음 우선순위: Table 4 → Table 3 → Table 6·7 → Figure 7 → 비교 모델(Table 1·2).
 
-**추가 실험 노트북** [`notebooks/Autoformer_extra_experiments.ipynb`](notebooks/Autoformer_extra_experiments.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HwangDaekyung/Autoformer_reproduction/blob/main/notebooks/Autoformer_extra_experiments.ipynb)
+**추가 실험 (노트북 섹션 12~24)**
 
-직접 구현한 모델만으로 가능한 1~2단계 실험(Figure 7, Table 4, Figure 5, Table 6, 7, 8, 5, 2)을 한 노트북에 담았습니다. 메인 노트북의 모델·로더 코드를 그대로 복사해 쓰고, 단변량 지원 · 디코더 과거 길이 0 지원 · Attention 교체(Full / LogSparse / LSH / ProbSparse)만 덧붙였습니다.
+같은 노트북 뒤쪽에 직접 구현한 모델만으로 가능한 1~2단계 실험(Figure 7, Table 4, Figure 5, Table 6, 7, 8, 5, 2)을 이어 붙였습니다. 섹션 1~8의 모델·로더·학습 함수를 그대로 쓰고, 단변량 지원 · 디코더 과거 길이 0 지원 · Attention 교체(Full / LogSparse / LSH / ProbSparse)만 덧붙였습니다.
 
 - 실험 1회가 끝날 때마다 결과를 CSV에 저장하고, **epoch마다 학습 상태(가중치·옵티마이저·early stopping·난수 상태)를 Drive에 저장**합니다. 끊기면 "모두 실행"만 다시 누르면 끝난 실험은 건너뛰고, 진행 중이던 실험은 마지막 epoch 다음부터 이어갑니다. 중단 후 이어서 학습한 결과가 끊기지 않은 학습과 같음을 확인했습니다(CPU, 같은 시드).
 - 비교 모델이 필요한 Table 1·2의 다른 모델, Table 3·9, Table 11은 다음 단계입니다.
