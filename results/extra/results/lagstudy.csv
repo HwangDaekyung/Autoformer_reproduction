@@ -1,0 +1,5 @@
+key,exp,setting,run,dataset,seq_len,pred_len,mse,mae,best_epoch,epochs_ran,train_time_sec,peak_mem_mb,resumed,status,finished_at
+lagstudy|I96|run0,lagstudy,I96,0,ETTm2,96,96,0.229808765040802,0.3143425783618172,1,4,143.0,2245.0,False,ok,2026-11-22T21:06:19
+lagstudy|I192|run0,lagstudy,I192,0,ETTm2,192,96,0.2790036874121595,0.3521831066287576,1,4,186.7,2248.0,False,ok,2026-11-22T21:09:32
+lagstudy|I336|run0,lagstudy,I336,0,ETTm2,336,96,0.39588880198788556,0.4309264795776764,2,5,330.9,2093.0,False,ok,2026-11-22T21:15:13
+lagstudy|I672|run0,lagstudy,I672,0,ETTm2,672,96,0.33755289809947525,0.39952982359996686,1,4,450.9,3892.0,False,ok,2026-11-22T21:22:57
